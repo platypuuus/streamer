@@ -13,4 +13,7 @@ describe('StudentService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+  /* it('findAll should not return empty', () => {
+    expect(service.findAll().subscribe.length).toBe(1);
+  }); */
 });
