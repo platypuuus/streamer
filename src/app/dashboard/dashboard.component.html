@@ -1,25 +1,11 @@
-<p>dashboard works!</p>
-
 <div class="row">
-  <span class="unselectionable" (click)="isAdmin = !isAdmin">{{
-    isAdmin ? "Admin" : "User"
-  }}</span>
+  <span id="toggle-user-role" (click)="isAdmin = !isAdmin">
+    {{ isAdmin ? 'Admin' : 'User'}}
+  </span>
 </div>
 
 <div class="row">
   <ng-container *ngFor="let tile of tiles">
-    <div class="col xs12 tile" *ngIf="isAdmin || tile.title !== 'Parameters'">
-      <div class="tile-title">
-        {{ tile.title }}
-      </div>
-
-      <blockquote>
-        {{ tile.summary }}
-      </blockquote>
-
-      <div class="tile-actions">
-        <button type="button" (click)="onClick(tile)">Go!</button>
-      </div>
-    </div>
+    <app-tile *ngIf="isAdmin || tile.title !== 'Parameters'" class="col xs12 md24" [tileInfo]="tile"></app-tile>
   </ng-container>
 </div>
