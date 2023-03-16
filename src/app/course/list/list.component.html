@@ -1,1 +1,26 @@
-<p>list works!</p>
+
+<div class="row">
+  <div class="col xs12">
+    <a [routerLink]="['/', 'dashboard']">Back</a>
+  </div>
+</div>
+
+<div class="col xs12">
+  <div class = "headerDiv">
+  <span class="titleTab">
+    Courses List
+  </span>
+  <span>
+    {{
+      courses.length
+    }}
+    items
+  </span></div>
+
+
+  <div *ngIf="courses.length">
+    <div *ngFor="let course of courses">
+      <app-course-tile [tileInfo]="course"> </app-course-tile>
+    </div>
+  </div>
+</div>

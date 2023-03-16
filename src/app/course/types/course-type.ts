@@ -1,4 +1,5 @@
 import { NgModule } from "@angular/core";
+import { ModuleType } from "./module-type";
 
 export type CourseType = {
     id?:number;
@@ -7,5 +8,5 @@ export type CourseType = {
     createdAt: string;
     updatedAt: string;
     objective: string;
-    moduleID: number;
+    modules: ModuleType[];
 }

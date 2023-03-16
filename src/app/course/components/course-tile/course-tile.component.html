@@ -1,1 +1,15 @@
-<p>course-tile works!</p>
+
+<div class="displayDiv">
+  <div class="titleCourse">{{ tileInfo.title }}</div>
+  <div class="lenghtOfCourse">{{ tileInfo.modules.length }} items</div>
+  <div [ngClass]="{'chevronCourse':true,'slideIN':tileInfo.isSelected,'slideOUT':(!tileInfo.isSelected&&animationEnable)}" (click)="onClick($event)">></div>
+</div>
+<div class="moduleDiv"  *ngIf="tileInfo.isSelected">
+
+<div *ngFor="let module of tileInfo.modules">
+  <app-module-list
+    [moduleInfo]="module"
+    *ngIf="tileInfo.isSelected"
+  ></app-module-list>
+</div>
+</div>
