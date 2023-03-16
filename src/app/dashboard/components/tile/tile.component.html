@@ -1,17 +1,17 @@
 <div class="tile">
-    <div class="title">
-      Some title
-    </div>
-  
-    <blockquote>
-      {{tileInfo.summary}}
-    </blockquote>
-  
-    <div class="actions">
-      <button type="button">Go!</button>
-    </div>
-  
-    <div class="waiter">
-      <div class="inner-waiter"></div>
-    </div>
+  <div class="title">
+    {{ tileInfo.title }}
   </div>
+
+  <blockquote>
+    {{ tileInfo.summary }}
+  </blockquote>
+
+  <div class="actions">
+    <button type="button" (click)="onClick(tileInfo)">Go!</button>
+  </div>
+
+  <div class="waiter">
+    <div class="inner-waiter"></div>
+  </div>
+</div>

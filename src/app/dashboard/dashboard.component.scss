@@ -1,8 +1,8 @@
-.unselectionable {
-    -webkit-user-select: none;
-    -webkit-touch-callout: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    color: #cc0000;
-  }
+.tile {
+  border: solid 1px black;
+}
+
+span {
+  display: inline-block;
+  font-weight: bold;
+}

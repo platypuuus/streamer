@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tile',
@@ -6,11 +7,16 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./tile.component.scss']
 })
 export class TileComponent implements OnInit {
-  @Input() public tileInfo:any;
+  @Input() public tileInfo: any;
 
-  constructor() { }
+  constructor(
+    private _router: Router
+  ) { }
 
   ngOnInit(): void {
   }
 
+  public onClick(object: any): void {
+    this._router.navigate(object.action);
+  }
 }

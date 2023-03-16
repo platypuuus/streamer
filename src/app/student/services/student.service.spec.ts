@@ -1,4 +1,7 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
+import { Observable } from 'rxjs';
+import { IStudent } from '../interfaces/i-student';
 
 import { StudentService } from './student.service';
 
@@ -6,14 +9,23 @@ describe('StudentService', () => {
   let service: StudentService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [
+        HttpClientModule
+      ],
+      providers: [
+        HttpClient
+      ]
+    });
     service = TestBed.inject(StudentService);
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
-  /* it('findAll should not return empty', () => {
-    expect(service.findAll().subscribe.length).toBe(1);
-  }); */
+
+  it(`Should be an instance of Observable`, () => {
+    let oIStudent = service.findAll()
+    expect(oIStudent).toBeInstanceOf(Observable)
+  })
 });

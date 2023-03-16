@@ -4,12 +4,15 @@ describe('StudentModel', () => {
   it('should create an instance', () => {
     expect(new StudentModel()).toBeTruthy();
   });
-  it('should have aubert as lastName an instance', () => {
-    const student:StudentModel= new StudentModel();
-    student.lastName='Aubert';
-    student.email='Aubert@gmail.com';
-    student.login='D4rkAubert';
-    student.password='AubertPsswrd';
-    expect(student.lastName).toBe('Aubert');
-  });
+
+  it (`Should have 'Aubert' as lastName`, () => {
+    const student: StudentModel = new StudentModel()
+    // Fill student object
+    student.lastName = 'Aubert'
+    student.email = 'jean-luc.aubert@aelion.fr'
+    student.login = 'jlaubert'
+    student.password = 'toto'
+
+    expect(student.lastName).toBe('Aubert')
+  })
 });
