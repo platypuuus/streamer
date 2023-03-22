@@ -28,20 +28,19 @@ export class StudentService {
     return this._httpClient.get<SimpleStudent[]>(this.endpoint + "/simple");
   }
 
-  public findOne(id: number): void {}
-
-  public findByEmail(email: string): void {
-    
+  public findOne(id: string): Observable<IStudent> {
+    return this._httpClient.get<IStudent>(this.endpoint + "/" + id);
   }
+
+  public findByEmail(email: string): void {}
 
   public findByLoginOrEmail(email: string, login: string): void {}
 
   public add(student: IStudent): Observable<IStudent> {
     console.log("Controller send " + JSON.stringify(student));
 
-    return this._httpClient
-      .post<IStudent>(this.endpoint, student);
-      /**.pipe(take(1))
+    return this._httpClient.post<IStudent>(this.endpoint, student);
+    /**.pipe(take(1))
       .subscribe({
         next: (response: IStudent) => {
           console.log(JSON.stringify(response));
@@ -54,7 +53,11 @@ export class StudentService {
       }); */
   }
 
-  public update(student: StudentModel): void {}
+  public update(student: StudentModel): Observable<IStudent>  {
+    console.log("Controller send " + JSON.stringify(student));
+
+    return this._httpClient.post<IStudent>(this.endpoint+"/update", student);
+  }
 
   public remove(student: StudentModel): void {}
 }

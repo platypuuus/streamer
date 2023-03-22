@@ -23,11 +23,7 @@ export class AddComponent implements OnInit {
     private _snackBar: MatSnackBar
   ) {}
 
-  randomGenerate : any = {
-    lastName : "",
-    email : "",
-    phone : ""
-  }
+
 
   ngOnInit(): void {
     this.form = this._formBuilder.group({
@@ -89,18 +85,5 @@ export class AddComponent implements OnInit {
     });
   }
 
-  public generateForm(): void {
-    let numbers: string = "0123456789";
-    let letter: string = "azertyuiopmlkjhgfdsqwxcvbn";
-    this.randomGenerate.lastName = this.generateOne(letter,10);
-  }
-  private generateOne(chain: string, lenght: number) {
-    let result: string = "";
-    let counter: number = 0;
-    while (counter < length) {
-      result += chain.charAt(Math.floor(Math.random() * chain.length));
-      counter += 1;
-    }
-    return result;
-  }
+
 }

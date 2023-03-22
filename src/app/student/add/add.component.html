@@ -103,14 +103,11 @@
         </div>
       </fieldset>
 
-      <button mat-raised-button color="primary" >
+      <button mat-raised-button color="primary" disabled>
         go !
       </button>
     </form>
     
-    <button mat-raised-button color="primary" (click)="generateForm()">
-        generate !
-      </button>
     {{ form.value | json }}
   </div>
 </div>
