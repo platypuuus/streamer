@@ -11,6 +11,7 @@ import { take } from "rxjs";
 import { IStudent } from "../interfaces/i-student";
 import { ListComponent } from "../list/list.component";
 import { StudentModel } from "../models/student-model";
+import { StudentFormService } from "../services/student-form.service";
 import { StudentService } from "../services/student.service";
 import { SimpleStudent } from "../types/simple-student-type";
 
@@ -26,41 +27,16 @@ export class UpdateComponent implements OnInit {
     public dialogRef: MatDialogRef<UpdateComponent>,
     @Inject(MAT_DIALOG_DATA) public data: IStudent,
     private _service: StudentService,
-    private _formBuilder: FormBuilder
+    private _studentFormService: StudentFormService,
+    
   ) {}
 
   ngOnInit(): void {
     console.log(this.data);
     console.log(this.c["email"]);
-    this.form = this._formBuilder.group({
-      lastName: [
-        "", //valeur par defaut
-        [Validators.required], //Function de validation
-      ],
-      firstName: [
-        "", //valeur par defaut
-        [], //Function de validation
-      ],
-      email: [
-        "",
-        [
-          Validators.required,
-          Validators.pattern(/[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/),
-        ],
-      ],
-      phoneNumber: [""],
-      login: [
-        "", //valeur par defaut
-        [Validators.required], //Function de validation
-      ],
-      password: [
-        "",
-        [
-          Validators.required,
-          Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/),
-        ], //minuscule majuscule et chiffres
-      ],
-    });
+
+    this.form = this._studentFormService.form;
+
     this.form.setValue({
       lastName: this.data.lastName,
       firstName: this.data.firstName,
@@ -72,7 +48,7 @@ export class UpdateComponent implements OnInit {
   }
 
   public get c(): { [key: string]: AbstractControl } {
-    return this.form.controls;
+    return this._studentFormService.c;
   }
 
   public onSubmit(): void {

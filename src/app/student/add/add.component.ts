@@ -8,6 +8,7 @@ import {
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { take } from "rxjs";
 import { IStudent } from "../interfaces/i-student";
+import { StudentFormService } from "../services/student-form.service";
 import { StudentService } from "../services/student.service";
 
 @Component({
@@ -15,10 +16,11 @@ import { StudentService } from "../services/student.service";
   templateUrl: "./add.component.html",
   styleUrls: ["./add.component.scss"],
 })
+
 export class AddComponent implements OnInit {
   public form: FormGroup = new FormGroup({});
   constructor(
-    private _formBuilder: FormBuilder,
+    private _studentFormService: StudentFormService,
     private _service: StudentService,
     private _snackBar: MatSnackBar
   ) {}
@@ -26,41 +28,10 @@ export class AddComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.form = this._formBuilder.group({
-      lastName: [
-        "", //valeur par defaut
-        [Validators.required], //Function de validation
-      ],
-      email: [
-        "",
-        [
-          Validators.required,
-          Validators.pattern(/[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/),
-        ],
-      ],
-      phoneNumber: [
-        "",
-        [
-          Validators.pattern(
-            /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im
-          ),
-        ],
-      ],
-      login: [
-        "", //valeur par defaut
-        [Validators.required], //Function de validation
-      ],
-      password: [
-        "",
-        [
-          Validators.required,
-          Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/),
-        ], //minuscule majuscule et chiffres
-      ],
-    });
+    this.form = this._studentFormService.form;
   }
   public get c(): { [key: string]: AbstractControl } {
-    return this.form.controls;
+    return this._studentFormService.c;
   }
   public onSubmit(): void {
     this._service
