@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col xs12">
+            <form [formGroup]="form">
+                <fieldset>
+                    <legend>Course Info</legend>
+                    <div class="row">
+                        <div class="col xs12 md12">
+                            <mat-form-field>
+                                <input matInput placeholder="Course title" formControlName="title">
+                                <mat-error *ngIf="c['title'].errors && c['title'].touched">
+                                    Title is required
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="col xs12 md12">
+                            <mat-form-field>
+                                <textarea matInput placeholder="Course objective..." formControlName="objective"></textarea>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    
+                    
+                </fieldset>
+
+                <button mat-raised-button color="primary">Add Course</button>
+            </form>
+
+
+

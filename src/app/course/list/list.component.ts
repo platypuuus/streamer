@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { take } from 'rxjs';
 import { CourseService } from '../services/course.service';
 import { CourseType } from '../types/course-type';
@@ -12,7 +13,7 @@ import { SelectCourseType } from '../types/select-course-type';
 export class ListComponent implements OnInit {
   public courses : SelectCourseType[]=[];  
 
-  constructor(private _courseService: CourseService) { }
+  constructor(private _courseService: CourseService,private _router: Router) { }
 
   ngOnInit(): void {    
     this._courseService.findAll()
@@ -24,5 +25,7 @@ export class ListComponent implements OnInit {
       
   }
   
-
+  public onClick(object: any): void {
+    this._router.navigate(object.action);
+  }
 }

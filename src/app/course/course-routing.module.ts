@@ -1,5 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { AddComponent } from "../student/add/add.component";
+import { AddCourseComponent } from "./components/add-course/add-course.component";
 import { ListComponent } from "./list/list.component";
 
 @NgModule({
@@ -18,5 +20,10 @@ export class CourseRoutingModule {
       component: ListComponent,
       pathMatch: "full",
     },
+    {
+      path: "add",
+      component: AddCourseComponent,
+      pathMatch: "full",
+    }
   ];
 }

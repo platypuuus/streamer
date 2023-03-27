@@ -9,6 +9,7 @@ import { ConvertHourPipe } from './pipe/convert-hour.pipe';
 
 import { SharedModule } from '../shared/shared.module';
 import { DeleteCourseComponent } from './dialog/delete-course/delete-course.component';
+import { AddCourseComponent } from './components/add-course/add-course.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { DeleteCourseComponent } from './dialog/delete-course/delete-course.comp
     CourseTileComponent,
     ModuleListComponent,
     ConvertHourPipe,
-    DeleteCourseComponent
+    DeleteCourseComponent,
+    AddCourseComponent
   ],
   imports: [
     CommonModule,
