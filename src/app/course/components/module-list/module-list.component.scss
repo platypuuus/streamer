@@ -1,5 +1,70 @@
 .oneModule{
-    display: block;
+    display: flex;
     margin-left: 3%;
     border-bottom: 1px solid black;
+    justify-content: space-between;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
+.oneMedia{
+    display: flex;
+    margin-left: 3%;
+    border-bottom: 1px solid black;
+    justify-content: space-between;
+}
+.mediaList{
+  margin-left: 3%;
+}
+.titleCourse {
+    color:cadetblue;
+    width: 80%;
+  }
+  .chevronCourse{
+    display: inline;
+      user-select: none;
+      float: right;
+  }
+  .lenghtOfCourse {
+    color: crimson;
+  }
+  .displayDiv{
+    display: flex;
+    border-bottom: 2px solid black;
+    margin-top: 1em;
+    padding-bottom: 1em;
+  
+  }
+  .moduleDiv{
+    
+    margin-top: 1em;
+    padding-bottom: 1em;
+  }
+  
+  .slideIN{    
+    animation: 1s ease-in 0s  running slidein;
+    animation-fill-mode: forwards;
+  }
+  .slideOUT{
+  
+    animation: 1s ease-in 0s  running slideout;
+    animation-fill-mode: forwards;
+  }
+  .moduleDiv{
+    animation: 1s cubic-bezier(0, 0.7, 0.59, 0.51) 0s  running fadein;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes fadein {
+    0% { opacity: 0; }
+    100%   { opacity: 1; }
+  }
+  @keyframes slidein {
+    0% { rotate: 0deg; }
+    100%   { rotate: 90deg; }
+  }
+  
+  @keyframes slideout {
+    0% { rotate: 90deg; }
+    80% { rotate: -20deg; }
+    100%   { rotate: 0deg; }
+  }

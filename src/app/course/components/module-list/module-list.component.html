@@ -1,1 +1,23 @@
-<div class="oneModule">{{moduleInfo.name}}</div>
+<div class="oneModule">
+  <div class="titleCourse">{{ moduleInfo.name }} | {{this.moduleTime|convertHour}}</div>
+  <div class="lenghtOfCourse">{{ moduleInfo.medias.length }} items</div>
+  <div
+    [ngClass]="{
+      chevronCourse: true,
+      slideIN: moduleInfo.isSelected,
+      slideOUT: !moduleInfo.isSelected && animationEnable
+    }"
+    (click)="onClick($event)"
+  >
+    >
+  </div>
+</div>
+
+<div class="mediaList" *ngIf="moduleInfo.isSelected">
+
+    <br><div class="oneMedia" *ngFor="let media of moduleInfo.medias">
+        <div >{{media.title}} |  {{media.duration|convertHour}}</div><div>{{media.type}}</div>
+    </div>
+</div>
+
+
