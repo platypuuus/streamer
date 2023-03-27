@@ -3,6 +3,20 @@
   <div class="titleCourse">{{ tileInfo.title }}</div>
   <div class="lenghtOfCourse">{{ tileInfo.modules.length }} items</div>
   <div [ngClass]="{'chevronCourse':true,'slideIN':tileInfo.isSelected,'slideOUT':(!tileInfo.isSelected&&animationEnable)}" (click)="onClick($event)">></div>
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <span>View course</span>
+    </button>
+    <button mat-menu-item disabled>
+      <span>Update course</span>
+    </button>
+    <button mat-menu-item (click)="openDialog(tileInfo)"> 
+      <span class="dltText">Delete Course</span>
+    </button>
+  </mat-menu>
 </div>
 <div class="moduleDiv"  *ngIf="tileInfo.isSelected">
 

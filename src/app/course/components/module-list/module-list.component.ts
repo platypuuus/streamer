@@ -1,8 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MediaType } from '../../types/media-type';
 import { SelectModuleType } from '../../types/select-module-type';
-import { UiModule } from 'src/app/ui/ui.module';
-import {MatIconModule} from '@angular/material/icon';
 
 @Component({
   selector: 'app-module-list',

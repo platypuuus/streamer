@@ -1,54 +1,74 @@
 .titleCourse {
-  color:cadetblue;
+  color: cadetblue;
   width: 80%;
 }
-.chevronCourse{
+.chevronCourse {
   display: inline;
-    user-select: none;
-    float: right;
+  user-select: none;
+  float: right;
 }
 .lenghtOfCourse {
   color: crimson;
 }
-.displayDiv{
+.dltText {
+  color: crimson;
+}
+.displayDiv {
   display: flex;
   border-bottom: 2px solid black;
   justify-content: space-between;
   margin-top: 1em;
   padding-bottom: 1em;
-
 }
-.moduleDiv{
-  
+.displayDiv {
+  div {
+    display: flex;
+    align-items: center;
+  }
+}
+.moduleDiv {
   margin-top: 1em;
   padding-bottom: 1em;
 }
 
-.slideIN{    
-  animation: 1s ease-in 0s  running slidein;
+.slideIN {
+  animation: 1s ease-in 0s running slidein;
   animation-fill-mode: forwards;
 }
-.slideOUT{
-
-  animation: 1s ease-in 0s  running slideout;
+.slideOUT {
+  animation: 1s ease-in 0s running slideout;
   animation-fill-mode: forwards;
 }
-.moduleDiv{
-  animation: 1s cubic-bezier(0, 0.7, 0.59, 0.51) 0s  running fadein;
+.moduleDiv {
+  animation: 1s cubic-bezier(0, 0.7, 0.59, 0.51) 0s running fadein;
   animation-fill-mode: forwards;
 }
 
 @keyframes fadein {
-  0% { opacity: 0; }
-  100%   { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 @keyframes slidein {
-  0% { rotate: 0deg; }
-  100%   { rotate: 90deg; }
+  0% {
+    rotate: 0deg;
+  }
+  100% {
+    rotate: 90deg;
+  }
 }
 
 @keyframes slideout {
-  0% { rotate: 90deg; }
-  80% { rotate: -20deg; }
-  100%   { rotate: 0deg; }
+  0% {
+    rotate: 90deg;
+  }
+  80% {
+    rotate: -20deg;
+  }
+  100% {
+    rotate: 0deg;
+  }
 }

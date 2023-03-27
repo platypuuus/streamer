@@ -7,17 +7,22 @@ import { CourseTileComponent } from './components/course-tile/course-tile.compon
 import { ModuleListComponent } from './components/module-list/module-list.component';
 import { ConvertHourPipe } from './pipe/convert-hour.pipe';
 
+import { SharedModule } from '../shared/shared.module';
+import { DeleteCourseComponent } from './dialog/delete-course/delete-course.component';
+
 
 @NgModule({
   declarations: [
     ListComponent,
     CourseTileComponent,
     ModuleListComponent,
-    ConvertHourPipe
+    ConvertHourPipe,
+    DeleteCourseComponent
   ],
   imports: [
     CommonModule,
-    CourseRoutingModule
+    CourseRoutingModule,
+    SharedModule
   ]
 })
 export class CourseModule { }
