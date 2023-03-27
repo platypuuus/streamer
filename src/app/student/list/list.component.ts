@@ -52,6 +52,17 @@ export class ListComponent implements OnInit {
         })
     }
   }
+  public deleteCheckedStudents():void{
+
+    
+    const checkedStudent: SimpleStudent[] = []
+    this.students.forEach((s: SimpleStudent) => {
+      if (s.isSelected) checkedStudent.push(s)
+     })
+     this._studentService.remove(checkedStudent).pipe(take(1)).subscribe(()=>{
+      this.ngOnInit();
+     });
+  }
 
   public byId(): void {
     this.students.sort((s1: SimpleStudent, s2: SimpleStudent) => (s1.id! - s2.id!) * this.byIdSortOrder)
@@ -103,17 +114,8 @@ export class ListComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result: StudentModel) => { // student was received from dialog
 
       console.log(result);
-      if (result) {       
-        this._studentService.update(result)
-        .subscribe({
-          next: (response: HttpResponse<any>) => {
-            console.log(`Student was updated ${response.status}`)
-            this.ngOnInit();
-          },
-          error: (error: any) => {
-            console.log(JSON.stringify(error))
-          }
-        })
+      if (result) { 
+        this.ngOnInit();
         console.log(`Got a result, do a job`)
       } else {
         console.log(`No result, lunch time`)

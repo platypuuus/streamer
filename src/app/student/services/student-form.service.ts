@@ -1,6 +1,8 @@
+import { HttpResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { AbstractControl, FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Observable } from "rxjs";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { Observable, take } from "rxjs";
 import { IStudent } from "../interfaces/i-student";
 import { StudentModel } from "../models/student-model";
 import { StudentService } from "./student.service";
@@ -14,7 +16,8 @@ export class StudentFormService {
 
   constructor(
     private _formBuilder: FormBuilder,
-    private _studentService: StudentService
+    private _studentService: StudentService,
+    private _snackBar: MatSnackBar
   ) { 
     this._buildForm()
   }
@@ -56,7 +59,12 @@ export class StudentFormService {
       this._student.phoneNumber = this.c['phoneNumber'].value
       this._student.login = this.c['login'].value
       this._student.password = this.c['password'].value
-      return this._studentService.update(this._student)
+
+      this.openSnackBar("Etudiant "+this._student.lastName+" mis à jour !",true);
+
+      const stu : Observable<HttpResponse<any>> = this._studentService.update(this._student);
+
+      return stu;
     }
 
     const student: IStudent = {
@@ -68,9 +76,18 @@ export class StudentFormService {
       password: this.c['password'].value,
       isSelected: false
     }
+    
+    this.openSnackBar("Etudiant "+this._student.lastName+" crée !",true);
     return this._studentService.add(student)
   }
-  
+
+  openSnackBar(message: string, succes: boolean) {
+    this._snackBar.open(message, "", {
+      duration: 2000,
+      panelClass: [succes ? "green-snackbar" : "red-snackbar"],
+    });
+  }
+
   private _buildForm(): void {
     this._form = this._formBuilder.group({
       lastName: [
