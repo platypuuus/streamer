@@ -1,6 +1,6 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable, take } from "rxjs";
+import { map, Observable, take, tap } from "rxjs";
 import { IStudent } from "../interfaces/i-student";
 import { StudentModel } from "../models/student-model";
 import { SimpleStudent } from "../types/simple-student-type";
@@ -28,36 +28,34 @@ export class StudentService {
     return this._httpClient.get<SimpleStudent[]>(this.endpoint + "/simple");
   }
 
-  public findOne(id: string): Observable<IStudent> {
-    return this._httpClient.get<IStudent>(this.endpoint + "/" + id);
+  public findOne(id: number): Observable<StudentModel> {
+    return this._httpClient.get<any>(this.endpoint + "/" + id).pipe(
+      tap((response: any) => {
+        console.log(JSON.stringify(response));
+      }),
+      take(1),
+      map((student: any) => student)
+    );
   }
 
   public findByEmail(email: string): void {}
 
   public findByLoginOrEmail(email: string, login: string): void {}
 
-  public add(student: IStudent): Observable<IStudent> {
-    console.log("Controller send " + JSON.stringify(student));
-
+  public add(student: IStudent): Observable<any> {
     return this._httpClient.post<IStudent>(this.endpoint, student);
-    /**.pipe(take(1))
-      .subscribe({
-        next: (response: IStudent) => {
-          console.log(JSON.stringify(response));
-          return true;
-        },
-        error: (error: any) => {
-          console.log(`Something went wrong : ${JSON.stringify(error)}`);
-          return false;
-        },
-      }); */
   }
 
-  public update(student: StudentModel): Observable<IStudent>  {
-    console.log("Controller send " + JSON.stringify(student));
-
-    return this._httpClient.post<IStudent>(this.endpoint+"/update", student);
+  public update(student: StudentModel): Observable<HttpResponse<any>> {
+    return this._httpClient.put<StudentModel>(this.endpoint, student, {
+      observe: "response",
+    });
   }
 
-  public remove(student: StudentModel): void {}
+  public remove(students: SimpleStudent[]): Observable<any> {
+    
+    console.log (students)
+    return this._httpClient.request('DELETE', this.endpoint, { body: students })
+    
+  }
 }
