@@ -6,7 +6,6 @@ textarea {
 }
 .mat-card-title {
   display: inline;
-  margin-right: 80%;
 }
 .mat-card {
     margin-top: 1em;
@@ -18,4 +17,22 @@ textarea {
   margin-top: 1em;
   
   text-align: center;
+}
+
+.inMat{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .mat-card-title{
+    display: flex;
+    flex-wrap: wrap;
+    
+    max-width: 40em;
+    overflow-wrap: anywhere;
+  }
+/*overflow: auto;overflow-y: hidden; // hide vertical
+overflow-x: hidden; // hide horizontal
+  button{
+      float :right;
+  }*/
 }

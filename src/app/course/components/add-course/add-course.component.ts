@@ -91,7 +91,7 @@ export class AddCourseComponent implements OnInit {
 
   private _buildForm(): void {
     this.form = this._formBuilder.group({
-      title: ["", [Validators.required]],
+      title: ["", [Validators.required,Validators.maxLength(255)]],
       objective: [""],
     });
   }

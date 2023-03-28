@@ -4,10 +4,10 @@
   textarea {
     height: 10em;
   }
-  .mat-card-title {
+ /* .mat-card-title {
     display: inline;
     margin-right: 80%;
-  }
+  }*/
   .mat-card {
       margin-top: 1em;
   }
@@ -21,4 +21,16 @@
   }
   button{
     margin-right: 1em;
+  }
+  .moduleNamediv{
+    display: inline-block;
+    width: 50%;
+  }
+  .inMat{
+    .mat-card-title{
+        float : left;
+    }
+    button{
+        float :right;
+    }
   }

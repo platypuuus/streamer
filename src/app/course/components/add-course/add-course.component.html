@@ -15,6 +15,9 @@
               <mat-error *ngIf="c['title'].errors && c['title'].touched">
                 Title is required
               </mat-error>
+              <span *ngIf="c['password'].hasError('maxlength')">
+                  Too much chars
+              </span>
             </mat-form-field>
           </div>
           <div class="col xs12 md12">
@@ -39,16 +42,16 @@
         <div *ngFor="let module of newModules">
           <mat-card>
             <mat-card-content>
-              <mat-card-title>{{ module.name }}</mat-card-title>
+             <div class="inMat"><mat-card-title>{{ module.name }}</mat-card-title>
 
-              <button
+               <button
                 class="dltButton"
                 mat-fab
                 color="primary"
                 (click)="deleteNewModule(module)"
               >
                 <mat-icon>delete</mat-icon>
-              </button>
+              </button></div>
             </mat-card-content>
           </mat-card>
         </div>
