@@ -111,6 +111,7 @@ export class ListComponent implements OnInit {
       data: {student} // student is passed to dialog => {student: student}
     })
     dialogRef.disableClose =true;
+    
     dialogRef.afterClosed().subscribe((result: StudentModel) => { // student was received from dialog
 
       console.log(result);

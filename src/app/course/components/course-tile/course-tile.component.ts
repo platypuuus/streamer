@@ -46,7 +46,7 @@ export class CourseTileComponent implements OnInit {
   public openDialog(course: CourseType): void {
     const dialogRef = this._matDialog.open(DeleteCourseComponent, {
       hasBackdrop: true,
-      data: { course },
+      data:  this.tileInfo ,
     });
     dialogRef.disableClose = true;
     dialogRef.afterClosed().subscribe((result: boolean) => {
