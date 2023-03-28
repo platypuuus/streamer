@@ -65,7 +65,7 @@ export class CourseTileComponent implements OnInit {
       .subscribe(() => {
         console.log("course deleted !");
         this._listComponent.ngOnInit();
-        this.openSnackBar("Cours suprimé. "+this.tileInfo.modules.length+" ont été supprimé dans l'opération.",true)
+        this.openSnackBar("Cours suprimé. "+this.tileInfo.modules.length+" modules ont été supprimé dans l'opération.",true)
       });
   }
   

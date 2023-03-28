@@ -19,7 +19,9 @@ export class CourseService {
 
   public findOne(id: number): void {}
 
-  public add(course: CourseType): void {}
+  public add(course: CourseType): Observable<any> {
+    return this._httpClient.post<CourseType>(this.endpoint, course);
+  }
 
   public update(course: CourseType): void {}
 
