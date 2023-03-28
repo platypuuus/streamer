@@ -9,6 +9,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
+import {MatCardModule} from '@angular/material/card';
 
 
 
@@ -27,6 +28,7 @@ export class UiModule {
     MatSnackBarModule,
     MatDialogModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    MatCardModule
   ];
 }
