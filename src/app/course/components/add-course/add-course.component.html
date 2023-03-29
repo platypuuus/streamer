@@ -15,7 +15,7 @@
               <mat-error *ngIf="c['title'].errors && c['title'].touched">
                 Title is required
               </mat-error>
-              <span *ngIf="c['password'].hasError('maxlength')">
+              <span *ngIf="c['title'].hasError('maxlength')">
                   Too much chars
               </span>
             </mat-form-field>
